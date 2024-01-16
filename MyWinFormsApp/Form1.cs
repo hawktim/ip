@@ -85,6 +85,8 @@ namespace MyWinFormsApp
 
         private void numericValueChanged(object sender, EventArgs e)
         {
+            pictureBox2.Refresh();
+
             var d = new DArg((double)numericUpDown1.Value, (double)numericUpDown2.Value, (double)numericUpDown3.Value);
             btnCreatePDF.Enabled = d.A != 0;
             var discriminant = d.B * d.B - 4 * d.A * d.C;
@@ -123,7 +125,6 @@ namespace MyWinFormsApp
             }
 
             label5.Text = string.Join(", ", value);
-            pictureBox2.Refresh();
         }
 
         private void Form1_Load(object sender, EventArgs e)
