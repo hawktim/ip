@@ -123,6 +123,7 @@ namespace MyWinFormsApp
             }
 
             label5.Text = string.Join(", ", value);
+            pictureBox2.Refresh();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -162,18 +163,11 @@ namespace MyWinFormsApp
 
             PointF[] points = new PointF[j+1];
 
-            points[cent] = new PointF(kx+0, ky+0);
             var setk = 0F;
             for (int i = 1; i <= cent; i++)
             {
-                var xx = (float)Math.Sqrt(dop / a)* koof;
-                points[cent - i] = new PointF(kx + -xx, ky + dop*-1* koof);
-                points[cent + i] = new PointF(kx + xx, ky + dop*-1* koof);
-                dop += fl;
-
                 setk = i * koof;
-                //points[cent] = new PointF(kx + 0, ky + 0);
-                PointF[] pointslinex = { new PointF((float) 0, ky + setk), new PointF((float)kx*2, ky + setk) };
+                PointF[] pointslinex = { new PointF((float)0, ky + setk), new PointF((float)kx * 2, ky + setk) };
                 g.DrawLines(Pens.LightGray, pointslinex);
                 PointF[] pointslinex1 = { new PointF((float)0, ky - setk), new PointF((float)kx * 2, ky - setk) };
                 g.DrawLines(Pens.LightGray, pointslinex1);
@@ -182,35 +176,30 @@ namespace MyWinFormsApp
                 PointF[] pointsliney1 = { new PointF(kx - setk, 0), new PointF(kx - setk, (float)ky * 2) };
                 g.DrawLines(Pens.LightGray, pointsliney1);
             }
+
+            if (a != 0) { 
+            var xx0 = -b / (2 * a);
+            var yy0 = a * xx0 * xx0 + b * xx0 + c;
+            float kx1 =(float)( kx + (xx0 * koof));
+            float ky1 = (float)(ky - (yy0 * koof));
+
+            points[cent] = new PointF(kx1 + 0, ky1 + 0);
+            for (int i = 1; i <= cent; i++)
+            {
+                var xx = (float)Math.Sqrt(dop / a)* koof;
+                points[cent - i] = new PointF(kx1 + -xx, ky1 + dop*-1* koof);
+                points[cent + i] = new PointF(kx1 + xx, ky1 + dop*-1* koof);
+                dop += fl;
+            }
+
             g.DrawLines(Pens.Red, points);
+            }
 
             PointF[] pointsx = { new PointF(0, ky), new PointF(kx * 2, ky) };
             g.DrawLines(Pens.Black, pointsx);
 
             PointF[] pointsy = { new PointF(kx, 0), new PointF(kx, ky * 2) };
             g.DrawLines(Pens.Black, pointsy);
-
-            PointF[] pointsline = new PointF[2];
-
-            if (b != 0)
-            {
-                for (var i = 1; i < 3; i++)
-                {
-                    var yy1 = i * 100 * (i > 1 ? -1 : 1);
-                    var xx1 = (-yy1 - c) / b;
-                    pointsline[i - 1] = new PointF((float)(kx + xx1 * koof), (float)((ky) - (yy1 * koof)));
-                }
-            }
-            else
-            {
-                for (var i = 1; i < 3; i++)
-                {
-                    var xx1 = i*100 * (i > 1 ? -1 : 1);
-                    var yy1 = -c;
-                    pointsline[i - 1] = new PointF((float)(kx + xx1 * koof), (float)((ky) - (yy1 * koof)));
-                }
-            }
-            g.DrawLines(Pens.Blue, pointsline);
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
