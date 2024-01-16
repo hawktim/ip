@@ -45,6 +45,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -54,11 +55,11 @@
             // 
             // btnCreatePDF
             // 
-            this.btnCreatePDF.Location = new System.Drawing.Point(367, 219);
+            this.btnCreatePDF.Location = new System.Drawing.Point(356, 219);
             this.btnCreatePDF.Name = "btnCreatePDF";
-            this.btnCreatePDF.Size = new System.Drawing.Size(107, 23);
+            this.btnCreatePDF.Size = new System.Drawing.Size(118, 23);
             this.btnCreatePDF.TabIndex = 0;
-            this.btnCreatePDF.Text = "Получить расчет";
+            this.btnCreatePDF.Text = "Выгрузить решения";
             this.btnCreatePDF.UseVisualStyleBackColor = true;
             this.btnCreatePDF.Click += new System.EventHandler(this.btnCreatePDF_Click);
             // 
@@ -131,10 +132,10 @@
             this.numericUpDown2.Size = new System.Drawing.Size(92, 20);
             this.numericUpDown2.TabIndex = 9;
             this.numericUpDown2.Value = new decimal(new int[] {
-            5,
+            4,
             0,
             0,
-            -2147483648});
+            0});
             this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericValueChanged);
             // 
             // numericUpDown3
@@ -155,7 +156,7 @@
             this.numericUpDown3.Size = new System.Drawing.Size(92, 20);
             this.numericUpDown3.TabIndex = 10;
             this.numericUpDown3.Value = new decimal(new int[] {
-            4,
+            3,
             0,
             0,
             0});
@@ -265,17 +266,28 @@
             // 
             this.pictureBox2.Location = new System.Drawing.Point(11, 248);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(500, 300);
+            this.pictureBox2.Size = new System.Drawing.Size(463, 300);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox2.TabIndex = 22;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label6.Location = new System.Drawing.Point(205, 222);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(62, 16);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "График";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(523, 561);
+            this.ClientSize = new System.Drawing.Size(486, 561);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -328,6 +340,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label6;
     }
 }
 

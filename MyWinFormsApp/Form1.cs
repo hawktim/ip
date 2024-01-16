@@ -63,11 +63,14 @@ namespace MyWinFormsApp
                     document.Add(header);
 
                     var d = new DArg((double)numericUpDown1.Value, (double)numericUpDown2.Value, (double)numericUpDown3.Value);
-
                     if (checkBox1.Checked) Execute<DiscriminantMethod>(document, d);
                     if (checkBox2.Checked) Execute<VietaMethod>(document, d);
-                    if (checkBox3.Checked) Execute<GraphMethod>(document, d);
-
+                    if (checkBox3.Checked)
+                    {
+                        if(checkBox1.Checked || checkBox2.Checked)
+                            document.Add(new AreaBreak());
+                        Execute<GraphMethod>(document, d);
+                    }
 
                 }
                 catch (Exception ex)

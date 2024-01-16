@@ -47,7 +47,7 @@ public class GraphMethod : DiscriminantMethod
         var im = GetImageGrp(arg);
         var img1 = new iText.Layout.Element.Image(ImageDataFactory.Create(im, null, false));
         img1.SetAutoScaleWidth(true);
-        document.Add(new AreaBreak());
+        
         document.Add(new Paragraph().Add(img1));
 
     }
