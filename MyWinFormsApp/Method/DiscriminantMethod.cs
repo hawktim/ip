@@ -38,12 +38,13 @@ public class DiscriminantMethod
 
     public virtual void AddHeader(Document document, DArg arg)
     {
-        Paragraph subheader = new Paragraph("Способ: "+ NameMethod)
-                   .SetTextAlignment(TextAlignment.CENTER)
-                   .SetFontSize(10);
-        document.Add(subheader);
-
         LineSeparator ls = new LineSeparator(new SolidLine());
+        document.Add(ls);
+        Paragraph subheader = new Paragraph(NameMethod)
+                   .SetTextAlignment(TextAlignment.CENTER)
+                   .SetFontSize(12)
+                   .SetBold();
+        document.Add(subheader);
         document.Add(ls);
 
         var img1 = new iText.Layout.Element.Image(
@@ -51,7 +52,7 @@ public class DiscriminantMethod
                            ImageHelper.ImageToBitmap(ImageHelper.GetImageFormula(arg.A + @"x^2"+(arg.B<0?"":"+") + arg.B + "x"+ (arg.C < 0 ? "" : "+") + arg.C + "=0"))
                            , Color.White, false)
                        );
-        img1.SetWidth(200);
+        img1.SetHeight(20);
 
         var d = GetDiscriminant(arg);
         var znak = (d == 0) ? "=" : (d > 0) ? ">" : "<";
@@ -60,7 +61,7 @@ public class DiscriminantMethod
                            ImageHelper.ImageToBitmap(ImageHelper.GetImageFormula("D=" + ImageHelper.GetValue(arg.B) + @"^2-4\cdot" + ImageHelper.GetValue(arg.A) + @"\cdot" + ImageHelper.GetValue(arg.C) + "=" + GetDiscriminant(arg) + znak + "0"))
                            , Color.White, false)
                        );
-        img2.SetWidth(200);
+        img2.SetHeight(20);
 
         document.Add(new Paragraph().Add(img1));
         if(!NotDescr)
@@ -81,14 +82,14 @@ public class DiscriminantMethod
                            ImageHelper.ImageToBitmap(ImageHelper.GetImageFormula(formula))
                            , Color.White, false)
                        );
-        img1.SetWidth(200);
+        img1.SetHeight(50);
         var formula1 = @"x_2=\frac{" + (-arg.B) + @"+\sqrt{" + d + @"}}{2\cdot" + ImageHelper.GetValue(arg.A) + "}="+x2;
         var img2 = new iText.Layout.Element.Image(
                        ImageDataFactory.Create(
                            ImageHelper.ImageToBitmap(ImageHelper.GetImageFormula(formula1))
                            , Color.White, false)
                        );
-        img2.SetWidth(200);
+        img2.SetHeight(50);
 
         var formula2 = @"x_1=" + x1+ "; x_2 = " + x2;
         var img3 = new iText.Layout.Element.Image(
@@ -96,12 +97,12 @@ public class DiscriminantMethod
                            ImageHelper.ImageToBitmap(ImageHelper.GetImageFormula(formula2))
                            , Color.White, false)
                        );
-        img3.SetWidth(200);
+        img3.SetHeight(20);
 
 
         document.Add(new Paragraph().Add(img1));
         document.Add(new Paragraph().Add(img2));
-        document.Add(new Paragraph("Ответ:"));
+        document.Add(new Paragraph("Ответ:").SetFontSize(12));
         document.Add(new Paragraph().Add(img3));
     }
 
@@ -118,16 +119,16 @@ public class DiscriminantMethod
                            ImageHelper.ImageToBitmap(ImageHelper.GetImageFormula(formula))
                            , Color.White, false)
                        );
-        img1.SetWidth(200);
+        img1.SetHeight(20);
         var formula2 = @"x_1=x_2=" + x1;
         var img3 = new iText.Layout.Element.Image(
                        ImageDataFactory.Create(
                            ImageHelper.ImageToBitmap(ImageHelper.GetImageFormula(formula2))
                            , Color.White, false)
                        );
-        img3.SetWidth(200);
+        img3.SetHeight(20);
         document.Add(new Paragraph().Add(img1));
-        document.Add(new Paragraph("Ответ:"));
+        document.Add(new Paragraph("Ответ:").SetFontSize(12));
         document.Add(new Paragraph().Add(img3));
     }
 
@@ -136,6 +137,6 @@ public class DiscriminantMethod
     /// </summary>
     public virtual void LessThanZero(Document document, DArg arg)
     {
-        document.Add(new Paragraph("Ответ: уравнение не имеет корней в действительных числах"));
+        document.Add(new Paragraph("Ответ: уравнение не имеет корней в действительных числах").SetFontSize(12));
     }
 }

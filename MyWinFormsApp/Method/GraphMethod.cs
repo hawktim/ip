@@ -13,24 +13,24 @@ public class GraphMethod : DiscriminantMethod
     private void AddImage(Document document, DArg arg)
     {
         document.Add(new Paragraph("Графически построим:"));
-        document.Add(new Paragraph("параболу:"));
+        document.Add(new Paragraph("параболу"));
         var formula2 = @"y=" + arg.A + "x^2";
         var imgp = new iText.Layout.Element.Image(
                        ImageDataFactory.Create(
                            ImageHelper.ImageToBitmap(ImageHelper.GetImageFormula(formula2))
                            , Color.White, false)
                        );
-        imgp.SetWidth(200);
+        imgp.SetHeight(25);
         document.Add(new Paragraph().Add(imgp));
 
-        document.Add(new Paragraph("прямую:"));
+        document.Add(new Paragraph("прямую"));
         var formula3 = @"y=" + arg.B + "x+c";
         var imgl = new iText.Layout.Element.Image(
                        ImageDataFactory.Create(
                            ImageHelper.ImageToBitmap(ImageHelper.GetImageFormula(formula3))
                            , Color.White, false)
                        );
-        imgl.SetWidth(200);
+        imgl.SetHeight(20);
         document.Add(new Paragraph().Add(imgl));
 
 
@@ -52,15 +52,15 @@ public class GraphMethod : DiscriminantMethod
         var x1 = (-arg.B - Math.Sqrt(d)) / (2 * arg.A);
         var x2 = (-arg.B + Math.Sqrt(d)) / (2 * arg.A);
 
-        document.Add(new Paragraph("Точки пересечения прямой и параболы будут точками А и В с абсциссами х1 = " + x1 + " и х2 = " + x2 + " соответственно."));
+        document.Add(new Paragraph("Точки пересечения прямой и параболы будут точками А и В с абсциссами х1 = " + x1 + " и х2 = " + x2 + " соответственно.").SetFontSize(12));
         var formula4 = @"x_1=" + x1 + "; x_2 = " + x2;
         var img3 = new iText.Layout.Element.Image(
                        ImageDataFactory.Create(
                            ImageHelper.ImageToBitmap(ImageHelper.GetImageFormula(formula4))
                            , Color.White, false)
                        );
-        img3.SetWidth(200);
-        document.Add(new Paragraph("Ответ:"));
+        img3.SetHeight(20);
+        document.Add(new Paragraph("Ответ:").SetFontSize(12));
         document.Add(new Paragraph().Add(img3));
     }
 
@@ -80,8 +80,8 @@ public class GraphMethod : DiscriminantMethod
                            ImageHelper.ImageToBitmap(ImageHelper.GetImageFormula(formula4))
                            , Color.White, false)
                        );
-        img3.SetWidth(200);
-        document.Add(new Paragraph("Ответ:"));
+        img3.SetHeight(20);
+        document.Add(new Paragraph("Ответ:").SetFontSize(12));
         document.Add(new Paragraph().Add(img3));
     }
 
@@ -91,7 +91,7 @@ public class GraphMethod : DiscriminantMethod
     public override void LessThanZero(Document document, DArg arg)
     {
         AddImage(document, arg);
-        document.Add(new Paragraph("Ответ: уравнение не имеет корней в действительных числах"));
+        document.Add(new Paragraph("Ответ: уравнение не имеет корней в действительных числах").SetFontSize(12));
     }
     private void DrawGraph(Graphics g, DArg arg)
     {
@@ -184,9 +184,6 @@ public class GraphMethod : DiscriminantMethod
             System.Drawing.Image bmp = pictureBox2.Image;
             Graphics g = Graphics.FromImage(bmp);
             DrawGraph(g, arg);
-            //pictureBox2.Image.Save(@"C:\WORK\test\image.jpg", System.Drawing.Imaging.ImageFormat.Png);
-            //Bitmap bitmap = new Bitmap(pictureBox2.Image);
-            //bitmap.Save(@"C:\WORK\test\image.jpg", ImageFormat.Jpeg);
             return pictureBox2.Image;
         }
     }

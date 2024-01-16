@@ -23,16 +23,16 @@ public class VietaMethod : DiscriminantMethod
                            ImageHelper.ImageToBitmap(ImageHelper.GetImageFormula(formula))
                            , Color.White, false)
                        );
-        img1.SetWidth(200);
+        img1.SetHeight(70);
         var formula2 = @"x_1=" + x1 + "; x_2 = " + x2;
         var img3 = new iText.Layout.Element.Image(
                        ImageDataFactory.Create(
                            ImageHelper.ImageToBitmap(ImageHelper.GetImageFormula(formula2))
                            , Color.White, false)
                        );
-        img3.SetWidth(200);
+        img3.SetHeight(20);
         document.Add(new Paragraph().Add(img1));
-        document.Add(new Paragraph("Ответ:"));
+        document.Add(new Paragraph("Ответ:").SetFontSize(12));
         document.Add(new Paragraph().Add(img3));
     }
 
@@ -48,16 +48,16 @@ public class VietaMethod : DiscriminantMethod
                            ImageHelper.ImageToBitmap(ImageHelper.GetImageFormula(formula))
                            , Color.White, false)
                        );
-        img1.SetWidth(200);
+        img1.SetHeight(20);
         var formula2 = @"x_1=x_2=" + x1;
         var img3 = new iText.Layout.Element.Image(
                        ImageDataFactory.Create(
                            ImageHelper.ImageToBitmap(ImageHelper.GetImageFormula(formula2))
                            , Color.White, false)
                        );
-        img3.SetWidth(200);
+        img3.SetHeight(20);
         document.Add(new Paragraph().Add(img1));
-        document.Add(new Paragraph("Ответ:"));
+        document.Add(new Paragraph("Ответ:").SetFontSize(12));
         document.Add(new Paragraph().Add(img3));
     }
 
@@ -72,8 +72,8 @@ public class VietaMethod : DiscriminantMethod
                            ImageHelper.ImageToBitmap(ImageHelper.GetImageFormula(formula))
                            , Color.White, false)
                        );
-        img1.SetWidth(200);
+        img1.SetHeight(20);
         document.Add(new Paragraph().Add(img1));
-        document.Add(new Paragraph("Ответ: уравнение не имеет корней в действительных числах"));
+        document.Add(new Paragraph("Ответ: уравнение не имеет корней в действительных числах").SetFontSize(12));
     }
 }
