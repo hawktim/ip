@@ -107,12 +107,12 @@ namespace MyWinFormsApp
             {
                 var x1 = (-d.B - Math.Sqrt(discriminant)) / (2 * d.A);
                 var x2 = (-d.B + Math.Sqrt(discriminant)) / (2 * d.A);
-                UpdateResult(new string[] { "x1=" + x1.ToString(), "x2=" + x2.ToString() });
+                UpdateResult(new string[] { "x1=" + x1.ToString("#0.0####"), "x2=" + x2.ToString("#0.0####") });
                 return;
             }
 
             var x = -d.B / (2 * d.A);
-            UpdateResult(new string[] {"x1=x2="+ x.ToString() });
+            UpdateResult(new string[] {"x1=x2="+ x.ToString("#0.0####") });
 
         }
 
@@ -124,7 +124,7 @@ namespace MyWinFormsApp
                 return;
             }
 
-            label5.Text = string.Join(", ", value);
+            label5.Text = string.Join("; ", value);
         }
 
         private void Form1_Load(object sender, EventArgs e)

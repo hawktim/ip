@@ -64,8 +64,11 @@ public class DiscriminantMethod
         img2.SetHeight(20);
 
         document.Add(new Paragraph().Add(img1));
-        if(!NotDescr)
+        if (!NotDescr)
+        {
+            document.Add(new Paragraph("Найдем дискриминант квадратного уравнения:"));
             document.Add(new Paragraph().Add(img2));
+        }
     }
     /// <summary>
     /// больше нуля
@@ -76,14 +79,14 @@ public class DiscriminantMethod
         var x1 = (-arg.B - Math.Sqrt(d)) / (2 * arg.A);
         var x2 = (-arg.B + Math.Sqrt(d)) / (2 * arg.A);
 
-        var formula = @"x_1=\frac{"+(-arg.B)+@"-\sqrt{" +d+ @"}}{2\cdot" + ImageHelper.GetValue(arg.A)+"}=" + x1;
+        var formula = @"x_1=\frac{"+(-arg.B)+@"-\sqrt{" +d+ @"}}{2\cdot" + ImageHelper.GetValue(arg.A)+"}=" + x1.ToString("#0.0####");
         var img1 = new iText.Layout.Element.Image(
                        ImageDataFactory.Create(
                            ImageHelper.ImageToBitmap(ImageHelper.GetImageFormula(formula))
                            , Color.White, false)
                        );
         img1.SetHeight(50);
-        var formula1 = @"x_2=\frac{" + (-arg.B) + @"+\sqrt{" + d + @"}}{2\cdot" + ImageHelper.GetValue(arg.A) + "}="+x2;
+        var formula1 = @"x_2=\frac{" + (-arg.B) + @"+\sqrt{" + d + @"}}{2\cdot" + ImageHelper.GetValue(arg.A) + "}="+x2.ToString("#0.0####");
         var img2 = new iText.Layout.Element.Image(
                        ImageDataFactory.Create(
                            ImageHelper.ImageToBitmap(ImageHelper.GetImageFormula(formula1))
@@ -91,7 +94,7 @@ public class DiscriminantMethod
                        );
         img2.SetHeight(50);
 
-        var formula2 = @"x_1=" + x1+ "; x_2 = " + x2;
+        var formula2 = @"x_1=" + x1.ToString("#0.0####") + "; x_2 = " + x2.ToString("#0.0####");
         var img3 = new iText.Layout.Element.Image(
                        ImageDataFactory.Create(
                            ImageHelper.ImageToBitmap(ImageHelper.GetImageFormula(formula2))
@@ -113,14 +116,14 @@ public class DiscriminantMethod
     {
         var x1 = (-arg.B) / (2 * arg.A);
 
-        var formula = @"x_1=x_2=\frac{" + (-arg.B) + @"}{2\cdot" + ImageHelper.GetValue(arg.A) + "}=" + x1;
+        var formula = @"x_1=x_2=\frac{" + (-arg.B) + @"}{2\cdot" + ImageHelper.GetValue(arg.A) + "}=" + x1.ToString("#0.0####");
         var img1 = new iText.Layout.Element.Image(
                        ImageDataFactory.Create(
                            ImageHelper.ImageToBitmap(ImageHelper.GetImageFormula(formula))
                            , Color.White, false)
                        );
-        img1.SetHeight(20);
-        var formula2 = @"x_1=x_2=" + x1;
+        img1.SetHeight(50);
+        var formula2 = @"x_1=x_2=" + x1.ToString("#0.0####");
         var img3 = new iText.Layout.Element.Image(
                        ImageDataFactory.Create(
                            ImageHelper.ImageToBitmap(ImageHelper.GetImageFormula(formula2))

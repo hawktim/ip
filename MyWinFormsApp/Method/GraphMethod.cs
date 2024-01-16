@@ -12,8 +12,18 @@ public class GraphMethod : DiscriminantMethod
     protected override bool NotDescr { get; } = true;
     private void AddImage(Document document, DArg arg)
     {
-        document.Add(new Paragraph("Графически построим:"));
-        document.Add(new Paragraph("параболу"));
+        document.Add(new Paragraph("Запишем уравнение в виде"));
+        var formula5 = arg.A + "x^2="+(arg.B*-1)+"x"+ (arg.C * -1>0?"+" : "") + (arg.C*-1);
+        var imgp1 = new iText.Layout.Element.Image(
+                       ImageDataFactory.Create(
+                           ImageHelper.ImageToBitmap(ImageHelper.GetImageFormula(formula5))
+                           , Color.White, false)
+                       );
+        imgp1.SetHeight(20);
+        document.Add(new Paragraph().Add(imgp1));
+
+
+        document.Add(new Paragraph("В одной системе координат построим график параболы"));
         var formula2 = @"y=" + arg.A + "x^2";
         var imgp = new iText.Layout.Element.Image(
                        ImageDataFactory.Create(
@@ -23,8 +33,8 @@ public class GraphMethod : DiscriminantMethod
         imgp.SetHeight(25);
         document.Add(new Paragraph().Add(imgp));
 
-        document.Add(new Paragraph("прямую"));
-        var formula3 = @"y=" + arg.B + "x+c";
+        document.Add(new Paragraph("и прямой"));
+        var formula3 = @"y=" + (arg.B * -1) + "x" + (arg.C * -1 > 0 ? "+" : "") + (arg.C * -1);
         var imgl = new iText.Layout.Element.Image(
                        ImageDataFactory.Create(
                            ImageHelper.ImageToBitmap(ImageHelper.GetImageFormula(formula3))
@@ -52,8 +62,8 @@ public class GraphMethod : DiscriminantMethod
         var x1 = (-arg.B - Math.Sqrt(d)) / (2 * arg.A);
         var x2 = (-arg.B + Math.Sqrt(d)) / (2 * arg.A);
 
-        document.Add(new Paragraph("Точки пересечения прямой и параболы будут точками А и В с абсциссами х1 = " + x1 + " и х2 = " + x2 + " соответственно.").SetFontSize(12));
-        var formula4 = @"x_1=" + x1 + "; x_2 = " + x2;
+        document.Add(new Paragraph("Точки пересечения прямой и параболы будут точками А и В с абсциссами х1 = " + x1.ToString("#0.0####") + " и х2 = " + x2.ToString("#0.0####") + " соответственно.").SetFontSize(12));
+        var formula4 = @"x_1=" + x1.ToString("#0.0####") + "; x_2 = " + x2.ToString("#0.0####");
         var img3 = new iText.Layout.Element.Image(
                        ImageDataFactory.Create(
                            ImageHelper.ImageToBitmap(ImageHelper.GetImageFormula(formula4))
@@ -73,8 +83,8 @@ public class GraphMethod : DiscriminantMethod
         var d = GetDiscriminant(arg);
         var x1 = (-arg.B) / (2 * arg.A);
 
-        document.Add(new Paragraph("Пересечением прямой и параболы будет точка А с абсциссой х = "+ x1 ));
-        var formula4 = @"x_1=x_2=" + x1;
+        document.Add(new Paragraph("Пересечением прямой и параболы будет точка А с абсциссой х = "+ x1.ToString("#0.0####") ));
+        var formula4 = @"x_1=x_2=" + x1.ToString("#0.0####");
         var img3 = new iText.Layout.Element.Image(
                        ImageDataFactory.Create(
                            ImageHelper.ImageToBitmap(ImageHelper.GetImageFormula(formula4))
