@@ -139,6 +139,7 @@
   <ItemGroup>
     <Content Include="Images\formula.png" />
     <Content Include="Images\formula1.png" />
+    <None Include="Resources\Безымянный-1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
